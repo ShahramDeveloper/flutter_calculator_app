@@ -46,7 +46,14 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
             backgroundColor: getBackgroundColor(text1),
           ),
           onPressed: () {
-            buttonPressed(text1);
+            if (text1 == 'ac') {
+              setState(() {
+                inputUser = '';
+                result = '';
+              });
+            } else {
+              buttonPressed(text1);
+            }
           },
           child: Text(
             text1,
