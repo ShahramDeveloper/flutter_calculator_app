@@ -8,42 +8,46 @@ void main() {
 class Application extends StatelessWidget {
   const Application({super.key});
 
-  Widget getRow() {
+  Widget getRow(
+      {required String text1,
+      required String text2,
+      required String text3,
+      required String text4}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          onPressed: () {},
           child: Text(
-            '1',
+            text1,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 26, color: textGrey),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          onPressed: () {},
           child: Text(
-            '2',
+            text2,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 26, color: textGrey),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          onPressed: () {},
           child: Text(
-            '3',
+            text3,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 26, color: textGrey),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          onPressed: () {},
           child: Text(
-            '+',
+            text4,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 26, color: textGrey),
           ),
-        )
+        ),
       ],
     );
   }
@@ -70,7 +74,13 @@ class Application extends StatelessWidget {
                   color: backgroundGrey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [getRow(), getRow(), getRow(), getRow()],
+                    children: [
+                      getRow(text1: 'ac', text2: 'ce', text3: "%", text4: '÷'),
+                      getRow(text1: '7', text2: '8', text3: '9', text4: '×'),
+                      getRow(text1: '4', text2: '5', text3: '6', text4: '-'),
+                      getRow(text1: '1', text2: '2', text3: '3', text4: '+'),
+                      getRow(text1: '00', text2: '0', text3: '.', text4: '='),
+                    ],
                   ),
                 ),
               )
