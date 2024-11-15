@@ -1,12 +1,26 @@
-import 'package:calculator_application/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 void main() {
-  runApp(Application());
+  runApp(CalculatorApplication());
 }
 
-class Application extends StatelessWidget {
-  const Application({super.key});
+class CalculatorApplication extends StatefulWidget {
+  const CalculatorApplication({super.key});
+
+  @override
+  State<CalculatorApplication> createState() => _CalculatorApplicationState();
+}
+
+class _CalculatorApplicationState extends State<CalculatorApplication> {
+  var inputUser = '';
+
+  void buttonPressed(String text) {
+    setState(() {
+      inputUser += text;
+    });
+  }
 
   Widget getRow(
       {required String text1,
@@ -23,7 +37,9 @@ class Application extends StatelessWidget {
             ),
             backgroundColor: getBackgroundColor(text1),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(text1);
+          },
           child: Text(
             text1,
             textAlign: TextAlign.center,
@@ -40,7 +56,9 @@ class Application extends StatelessWidget {
             ),
             backgroundColor: getBackgroundColor(text1),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(text2);
+          },
           child: Text(
             text2,
             textAlign: TextAlign.center,
@@ -57,7 +75,9 @@ class Application extends StatelessWidget {
             ),
             backgroundColor: getBackgroundColor(text3),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(text3);
+          },
           child: Text(
             text3,
             textAlign: TextAlign.center,
@@ -74,7 +94,9 @@ class Application extends StatelessWidget {
             ),
             backgroundColor: getBackgroundColor(text4),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(text4);
+          },
           child: Text(
             text4,
             textAlign: TextAlign.center,
@@ -101,6 +123,22 @@ class Application extends StatelessWidget {
                 child: Container(
                   height: 100,
                   color: backgroundGreyDark,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Text(
+                          inputUser,
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                              color: textGreen,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 28),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Expanded(
