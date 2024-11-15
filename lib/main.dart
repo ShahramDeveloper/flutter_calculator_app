@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 import 'constants.dart';
 
@@ -19,7 +20,13 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
 
   void buttonPressed(String text) {
     setState(() {
-      inputUser += text;
+      if (text == '×') {
+        inputUser += '*';
+      } else if (text == '÷') {
+        inputUser += '/';
+      } else {
+        inputUser += text;
+      }
     });
   }
 
@@ -104,6 +111,15 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
           ),
           onPressed: () {
             if (text4 == '=') {
+              Parser parser = Parser();
+              Expression expression = parser.parse(inputUser);
+              ContextModel contextModel = ContextModel();
+              double eval =
+                  expression.evaluate(EvaluationType.REAL, contextModel);
+              print(eval);
+              setState(() {
+                result = eval.toString();
+              });
             } else {
               buttonPressed(text4);
             }
@@ -151,7 +167,7 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
                       Padding(
                         padding: EdgeInsets.all(8),
                         child: Text(
-                          '123',
+                          result,
                           textAlign: TextAlign.end,
                           style: TextStyle(color: textGrey, fontSize: 62),
                         ),
