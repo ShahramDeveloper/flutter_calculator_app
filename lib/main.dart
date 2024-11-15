@@ -15,6 +15,7 @@ class CalculatorApplication extends StatefulWidget {
 
 class _CalculatorApplicationState extends State<CalculatorApplication> {
   var inputUser = '';
+  var result = '';
 
   void buttonPressed(String text) {
     setState(() {
@@ -59,7 +60,8 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
           onPressed: () {
             if (text2 == 'ce') {
               setState(() {
-                inputUser = inputUser.substring(0, inputUser.length - 1);
+                if (inputUser.isNotEmpty)
+                  inputUser = inputUser.substring(0, inputUser.length - 1);
               });
             } else {
               buttonPressed(text2);
@@ -101,7 +103,10 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
             backgroundColor: getBackgroundColor(text4),
           ),
           onPressed: () {
-            buttonPressed(text4);
+            if (text4 == '=') {
+            } else {
+              buttonPressed(text4);
+            }
           },
           child: Text(
             text4,
@@ -143,6 +148,14 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
                               fontSize: 28),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Text(
+                          '123',
+                          textAlign: TextAlign.end,
+                          style: TextStyle(color: textGrey, fontSize: 62),
+                        ),
+                      )
                     ],
                   ),
                 ),
