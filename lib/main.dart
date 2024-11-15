@@ -8,6 +8,46 @@ void main() {
 class Application extends StatelessWidget {
   const Application({super.key});
 
+  Widget getRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(3),
+          child: Text(
+            '1',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 26, color: textGrey),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(3),
+          child: Text(
+            '2',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 26, color: textGrey),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(3),
+          child: Text(
+            '3',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 26, color: textGrey),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(3),
+          child: Text(
+            '+',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 26, color: textGrey),
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,6 +68,10 @@ class Application extends StatelessWidget {
                 child: Container(
                   height: 100,
                   color: backgroundGrey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [getRow(), getRow(), getRow(), getRow()],
+                  ),
                 ),
               )
             ],
